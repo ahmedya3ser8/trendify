@@ -19,14 +19,15 @@ interface IProps<TFieldValue extends FieldValues> {
   type?: string;
   passwordConditions?: boolean;
   maskPassword?: boolean;
+  readonly?: boolean;
 }
 
-const InputForm = <TFieldValue extends FieldValues>({ error, id, label, name, register, type, passwordConditions = false, maskPassword = false }: IProps<TFieldValue>) => {
+const InputForm = <TFieldValue extends FieldValues>({ error, id, label, name, register, type, readonly = false, passwordConditions = false, maskPassword = false }: IProps<TFieldValue>) => {
   const [flag, setFlag] = useState(false);
   return (
     <div className="input_form">
       <div className="floating_label_group">
-        <input type={type || (flag ? 'text' : 'password' )} id={id} {...register(name)} className={`floating_input ${error ? 'border-red-500! shadow-none!' : '' }`} placeholder=" " />
+        <input type={type || (flag ? 'text' : 'password' )} readOnly={readonly} id={id} {...register(name)} className={`floating_input ${error ? 'border-red-500! shadow-none!' : '' }`} placeholder=" " />
         <label htmlFor={id} className={`floating_label ${error ? 'text-red-500!' : '' }`}> {label} </label>
         {maskPassword && (
           <span onClick={() => setFlag(prev => !prev)} className="absolute top-1/2 end-4 -translate-y-1/2"> 

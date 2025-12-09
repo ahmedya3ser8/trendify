@@ -1,1 +1,5 @@
 export { registerSchema, type TRegisterSchema } from './registerSchema'
+export { loginSchema, type TLoginSchema } from './loginSchema'
+export { forgetSchema, type TForgetSchema } from './forgetPassSchema'
+export { verifyCodeSchema, type TVerifyCodeSchema } from './verifyCodeSchema'
+export { resetPassSchema, type TResetPassSchema } from './resetPassSchema'

@@ -4,24 +4,27 @@ import { useForm, type SubmitHandler } from 'react-hook-form';
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-import { signup } from "@/features/auth";
-import { registerSchema, type TRegisterSchema } from "@/validations";
+import { signin } from "@/features/auth";
+import { loginSchema, type TLoginSchema } from "@/validations";
 
-const useRegister = () => {
+const useLogin = () => {
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors } } = useForm<TRegisterSchema>({
+  const { register, handleSubmit, formState: { errors } } = useForm<TLoginSchema>({
     mode: 'onTouched',
-    resolver: zodResolver(registerSchema)
+    resolver: zodResolver(loginSchema)
   })
-  const submitForm: SubmitHandler<TRegisterSchema> = (formData) => {
+  const submitForm: SubmitHandler<TLoginSchema> = (formData) => {
+    console.log(formData);
     mutateAsync(formData);
   }
   const { mutateAsync, isPending } = useMutation({
-    mutationFn: signup,
+    mutationFn: signin,
     onSuccess: (res) => {
+      console.log(res);
       if (res.message === 'success') {
-        toast.success('Account created successfully!');
-        navigate('/auth/login');
+        toast.success('Login successful! Welcome back.');
+        localStorage.setItem('access_trendify_token', res.token);
+        navigate('/');
       }
     },
     onError: (err) => toast.error(err.message)
@@ -29,4 +32,4 @@ const useRegister = () => {
   return { register, handleSubmit, errors, submitForm, isPending }
 }
 
-export default useRegister;
+export default useLogin;

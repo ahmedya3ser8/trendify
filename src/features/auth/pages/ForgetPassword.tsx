@@ -1,17 +1,18 @@
 import { useState } from "react";
 
-import { AuthSlider, ForgetForm, OtpForm, ResetForm } from "@/features/auth";
+import { AuthSlider, ForgetForm, VerifyForm, ResetForm } from "@/features/auth";
 
 const ForgetPassword = () => {
   const [steps, setSteps] = useState<'forget' | 'otp' | 'reset'>('forget');
+  const [email, setEmail] = useState<string>("");
   const renderForm = () => {
     switch(steps) {
       case 'forget':
-        return <ForgetForm />
+        return <ForgetForm setSteps={setSteps} setEmail={setEmail} />
       case 'otp':
-        return <OtpForm />
+        return <VerifyForm setSteps={setSteps} />
       case 'reset':
-        return <ResetForm />
+        return <ResetForm email={email} />
     }
   }
   return (
