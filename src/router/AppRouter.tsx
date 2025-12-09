@@ -5,15 +5,16 @@ import { Toaster } from 'react-hot-toast';
 import { AuthLayout, MainLayout } from '@/components/layouts';
 import { ForgetPassword, Login, Register } from '@/features/auth';
 import { AboutUs, Blog, ContactUs, Home } from '@/features/main';
+import PublicRoute from './PublicRoute'; 
 
 const router = createBrowserRouter([
   {
     path: 'auth',
     element: <AuthLayout />,
     children: [
-      { path: 'register', element: <Register /> },
-      { path: 'login', element: <Login /> },
-      { path: 'forget-password', element: <ForgetPassword /> }
+      { path: 'register', element: <PublicRoute> <Register /> </PublicRoute> },
+      { path: 'login', element: <PublicRoute> <Login /> </PublicRoute> },
+      { path: 'forget-password', element: <PublicRoute> <ForgetPassword /> </PublicRoute> }
     ]
   },
   {
