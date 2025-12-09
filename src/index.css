@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import 'swiper/css';
+@import 'swiper/css/effect-fade';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -42,7 +44,7 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: .625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -117,4 +119,64 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@theme {
+  --color-main: #8B5E35;
+  --color-secondary: #090F41;
+}
+
+@layer components {
+  .container {
+    @apply mx-auto px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20;
+  }
+  .btn_primary {
+    @apply w-full h-12 bg-gray-700 text-white rounded-md font-medium cursor-pointer transition duration-300 hover:bg-gray-800;
+  }
+}
+
+body {
+  background-color: #fafafa;
+}
+
+
+.floating_label_group {
+  position: relative;
+}
+
+.floating_input {
+  width: 100%;
+  height: 44px;
+  background-color: #fff;
+  border: 1px solid var(--color-gray-500);
+  padding: 12px;
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.floating_input:focus {
+  box-shadow: 0 0 0 1px var(--color-gray-600);
+  border-color: 0px;
+}
+
+.floating_label {
+  position: absolute;
+  inset-inline-start: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-gray-500);
+  background-color: transparent;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+.floating_input:focus + .floating_label,
+.floating_input:not(:placeholder-shown) + .floating_label {
+  top: 0;
+  transform: translateY(-50%);
+  padding: 0 4px;
+  background-color: #fff;
+  color: var(--color-secondary);
+  font-size: 12px;
 }

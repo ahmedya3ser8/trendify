@@ -1,3 +1,14 @@
 export { default as Login } from './pages/Login';
 export { default as Register } from './pages/Register';
 export { default as ForgetPassword } from './pages/ForgetPassword';
+export { default as AuthHeader } from './components/AuthHeader';
+export { default as AuthSlider } from './components/AuthSlider';
+export { default as RegisterForm } from './components/RegisterForm';
+export { default as LoginForm } from './components/LoginForm';
+export { default as ForgetForm } from './components/ForgetForm';
+export { default as OtpForm } from './components/OtpForm';
+export { default as ResetForm } from './components/ResetForm';
+export { default as InputForm } from './components/InputForm';
+export { default as useRegister } from './hooks/useRegister';
+export * from './models/iauth';
+export * from './services/auth.service';
