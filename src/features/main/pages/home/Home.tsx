@@ -8,7 +8,7 @@ import {
   Services, 
   Testimonials, 
   TopProducts 
-} from "../../components/home";
+} from "@/features/main/pages/home/components";
 
 const Home = () => {
   return (

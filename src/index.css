@@ -124,6 +124,7 @@
 @theme {
   --color-main: #8B5E35;
   --color-secondary: #090F41;
+  --font-caveat: "Caveat", cursive;;
 }
 
 @layer components {
@@ -132,6 +133,9 @@
   }
   .btn_primary {
     @apply w-full h-12 bg-gray-700 text-white rounded-md font-medium cursor-pointer transition duration-300 hover:bg-gray-800;
+  }
+  .btn_all {
+    @apply flex items-center gap-2 w-fit bg-transparent border border-main text-secondary px-6 py-2 mx-auto mt-5 rounded-lg transition duration-300 hover:bg-main hover:text-white;
   }
 }
 
