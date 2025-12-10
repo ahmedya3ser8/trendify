@@ -1,0 +1,9 @@
+export { default as Hero } from "./Hero";
+export { default as Categories } from "./Categories";
+export { default as FlashSale } from "./FlashSale";
+export { default as NewCollection } from "./NewCollection";
+export { default as BestSelling } from "./BestSelling";
+export { default as TopProducts } from "./TopProducts";
+export { default as Discover } from "./Discover";
+export { default as Services } from "./Services";
+export { default as Testimonials } from "./Testimonials";

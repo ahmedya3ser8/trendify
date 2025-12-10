@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <header className="bg-white fixed w-full left-0 top-0 shadow-sm py-4">
       <div className="container flex justify-between items-center">
-        <div className="logo text-3xl text-main font-semibold"> Trendify </div>
+        <div className="logo text-3xl text-main font-bold"> Trendify </div>
         <ul className="nav_links hidden lg:flex space-x-4">
           <li> <NavLink to='/' className="text-secondary text-xl transition duration-300"> Home </NavLink> </li>
           <li> <NavLink to='/products' className="text-secondary text-xl transition duration-300"> Products </NavLink> </li>

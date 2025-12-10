@@ -6,11 +6,11 @@ import type { IAuthResponse, IForgetResponse, IResetPassResponse, IVerifyCodeRes
 
 export const signup = async (formData: TRegisterSchema) => {
   try {
-    const { data } = await axiosInstance.post<IAuthResponse>('/auth/signup', formData);
+    const { data } = await axiosInstance.post<IAuthResponse>('auth/signup', formData);
     return data;
   } catch (err) {
     if (isAxiosError(err)) {
-      throw new Error(err.response?.data.message || 'Registration failed. Please try again.')
+      throw new Error(err.response?.data.message || 'failed. Please try again.')
     }
     throw new Error("Unexpected error occurred");
   }
@@ -18,11 +18,11 @@ export const signup = async (formData: TRegisterSchema) => {
 
 export const signin = async (formData: TLoginSchema) => {
   try {
-    const { data } = await axiosInstance.post<IAuthResponse>('/auth/signin', formData);
+    const { data } = await axiosInstance.post<IAuthResponse>('auth/signin', formData);
     return data;
   } catch (err) {
     if (isAxiosError(err)) {
-      throw new Error(err.response?.data.message || 'Login failed. Please try again.')
+      throw new Error(err.response?.data.message || 'failed. Please try again.')
     }
     throw new Error("Unexpected error occurred");
   }
@@ -30,11 +30,11 @@ export const signin = async (formData: TLoginSchema) => {
 
 export const forgotPassword = async (formData: TForgetSchema) => {
   try {
-    const { data } = await axiosInstance.post<IForgetResponse>('/auth/forgotPasswords', formData);
+    const { data } = await axiosInstance.post<IForgetResponse>('auth/forgotPasswords', formData);
     return data;
   } catch (err) {
     if (isAxiosError(err)) {
-      throw new Error(err.response?.data.message || 'forgotPassword failed. Please try again.')
+      throw new Error(err.response?.data.message || 'failed. Please try again.')
     }
     throw new Error("Unexpected error occurred");
   }
@@ -42,11 +42,11 @@ export const forgotPassword = async (formData: TForgetSchema) => {
 
 export const verifyResetCode = async (formData: TVerifyCodeSchema) => {
   try {
-    const { data } = await axiosInstance.post<IVerifyCodeResponse>('/auth/verifyResetCode', formData);
+    const { data } = await axiosInstance.post<IVerifyCodeResponse>('auth/verifyResetCode', formData);
     return data;
   } catch (err) {
     if (isAxiosError(err)) {
-      throw new Error(err.response?.data.message || 'verifyResetCode failed. Please try again.')
+      throw new Error(err.response?.data.message || 'failed. Please try again.')
     }
     throw new Error("Unexpected error occurred");
   }
@@ -54,11 +54,11 @@ export const verifyResetCode = async (formData: TVerifyCodeSchema) => {
 
 export const resetPassword = async (formData: TResetPassSchema) => {
   try {
-    const { data } = await axiosInstance.put<IResetPassResponse>('/auth/resetPassword', formData);
+    const { data } = await axiosInstance.put<IResetPassResponse>('auth/resetPassword', formData);
     return data;
   } catch (err) {
     if (isAxiosError(err)) {
-      throw new Error(err.response?.data.message || 'resetPassword failed. Please try again.')
+      throw new Error(err.response?.data.message || 'failed. Please try again.')
     }
     throw new Error("Unexpected error occurred");
   }
