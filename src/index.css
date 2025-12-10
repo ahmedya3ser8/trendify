@@ -137,8 +137,12 @@
 
 body {
   background-color: #fafafa;
+  font-family: "Cairo", sans-serif;
 }
 
+.active {
+  color: var(--color-main);
+}
 
 .floating_label_group {
   position: relative;

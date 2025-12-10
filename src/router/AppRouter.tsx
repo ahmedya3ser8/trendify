@@ -4,7 +4,7 @@ import { Toaster } from 'react-hot-toast';
 
 import { AuthLayout, MainLayout } from '@/components/layouts';
 import { ForgetPassword, Login, Register } from '@/features/auth';
-import { AboutUs, Blog, ContactUs, Home } from '@/features/main';
+import { AboutUs, Blog, ContactUs, Home, NotFound } from '@/features/main';
 import PublicRoute from './PublicRoute'; 
 
 const router = createBrowserRouter([
@@ -25,6 +25,7 @@ const router = createBrowserRouter([
       { path: 'about-us', element: <AboutUs /> },
       { path: 'contact-us', element: <ContactUs /> },
       { path: 'blog', element: <Blog /> },
+      { path: '*', element: <NotFound /> },
     ]
   }
 ])

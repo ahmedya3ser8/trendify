@@ -1,15 +1,16 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 
-import { Header, Footer } from '@/components/layouts' 
+import { Header, Footer } from '@/components/common';
 
 const MainLayout = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="min-h-screen mt-[72px]">
         <Outlet />
       </main>
       <Footer />
+      <ScrollRestoration />
     </>
   )
 }
