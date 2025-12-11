@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import arrowImg from '@/assets/images/home/arrow.png'
+import { FaStar } from 'react-icons/fa6';
 import styles from './styles.module.css';
 
 const Hero = () => {
@@ -15,6 +17,15 @@ const Hero = () => {
             Discover the perfect blend of style, comfort, and functionality for your space. 
           </p>
           <Link to='/products' className='block w-fit bg-main px-6 py-2 rounded-lg'> Shop Now </Link>
+        </div>
+        <div className="relative">
+          <div className="arrow_image absolute left-6 md:left-10">
+            <img src={arrowImg} className='w-20 md:w-32' alt="arrow_image" />
+          </div>
+          <div className="absolute top-16 left-28 md:top-32 md:left-44 text-white">
+            <div className="flex items-center gap-1 text-lg"> 4.8 | <FaStar /> <FaStar /> <FaStar /> <FaStar /> </div>
+            <p className='text-lg'>150k Total Review</p>
+          </div>
         </div>
       </div>
     </section>
