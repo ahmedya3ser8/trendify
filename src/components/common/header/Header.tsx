@@ -22,8 +22,8 @@ const Header = () => {
           <li> <NavLink to='/' className="text-secondary text-xl transition duration-300"> Home </NavLink> </li>
           <li> <NavLink to='/products' className="text-secondary text-xl transition duration-300"> Products </NavLink> </li>
           <li> <NavLink to='/about-us' className="text-secondary text-xl transition duration-300"> About Us </NavLink> </li>
-          <li> <NavLink to='/contact-us' className="text-secondary text-xl transition duration-300"> Contact Us </NavLink> </li>
           <li> <NavLink to='/blog' className="text-secondary text-xl transition duration-300"> Blog </NavLink> </li>
+          <li> <NavLink to='/contact-us' className="text-secondary text-xl transition duration-300"> Contact Us </NavLink> </li>
         </ul>
         <ul className="nav_links flex items-center space-x-4">
           <li> <Link to='/wishlist'> <FaRegHeart className="text-2xl text-main" /> </Link> </li>
