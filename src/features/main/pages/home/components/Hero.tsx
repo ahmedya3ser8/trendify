@@ -22,7 +22,7 @@ const Hero = () => {
           <div className="arrow_image absolute left-6 md:left-10">
             <img src={arrowImg} className='w-20 md:w-32' alt="arrow_image" />
           </div>
-          <div className="absolute top-16 left-28 md:top-32 md:left-44 text-white">
+          <div className="absolute top-16 left-28 md:top-28 md:left-44 text-white">
             <div className="flex items-center gap-1 text-lg"> 4.8 | <FaStar /> <FaStar /> <FaStar /> <FaStar /> </div>
             <p className='text-lg'>150k Total Review</p>
           </div>
