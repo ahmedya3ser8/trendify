@@ -5,7 +5,7 @@ import BlogList from "./components/BlogList";
 const Blog = () => {
   return (
     <>
-      <BreadCrumb />
+      <BreadCrumb pageTitle="Blog" />
       <BlogTitle />
       <BlogList />
     </>

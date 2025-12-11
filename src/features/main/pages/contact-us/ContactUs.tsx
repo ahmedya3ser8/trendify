@@ -1,7 +1,12 @@
+import { BreadCrumb } from "@/features/main";
+import ContactForm from "./components/ContactForm";
 
 const ContactUs = () => {
   return (
-    <div>ContactUs</div>
+    <>
+      <BreadCrumb pageTitle="Contact Us" />
+      <ContactForm />
+    </>
   )
 }
 
