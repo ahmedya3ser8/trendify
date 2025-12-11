@@ -33,7 +33,7 @@ const Header = () => {
             <DrawerTrigger asChild>
               <button type="button" className="toggel_bars lg:hidden"> <FaBars className="text-2xl text-main" /> </button>
             </DrawerTrigger>
-            <DrawerContent className="flex flex-col gap-4 p-4">
+            <DrawerContent className="flex flex-col gap-4 p-4 z-9999">
               <ul className="nav_links flex flex-col gap-4">
                 <li>
                   <DrawerClose asChild>
