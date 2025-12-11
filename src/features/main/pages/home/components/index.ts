@@ -5,5 +5,5 @@ export { default as FlashSale } from "./FlashSale";
 export { default as Hero } from "./Hero";
 export { default as NewCollection } from "./NewCollection";
 export { default as Services } from "./Services";
-export { default as Testimonials } from "./Testimonials";
 export { default as TopProducts } from "./TopProducts";
+export { default as Brands } from "./Brands";

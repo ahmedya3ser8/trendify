@@ -8,7 +8,7 @@ import { FaArrowRight } from 'react-icons/fa6';
 const FlashSale = () => {
   const { data: products } = useQuery({
     queryKey: ['flashSaleProducts'],
-    queryFn: () => getAllProducts(4),
+    queryFn: () => getAllProducts(4, '6439d5b90049ad0b52b90048'),
     select: (data) => data.data
   })
   return (

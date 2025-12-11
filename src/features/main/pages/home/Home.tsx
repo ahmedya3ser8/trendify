@@ -1,12 +1,12 @@
 import { 
   BestSelling, 
+  Brands, 
   Categories, 
   Discover, 
   FlashSale, 
   Hero, 
   NewCollection, 
   Services, 
-  Testimonials, 
   TopProducts 
 } from "@/features/main/pages/home/components";
 
@@ -21,7 +21,7 @@ const Home = () => {
       <TopProducts />
       <Discover />
       <Services />
-      <Testimonials />
+      <Brands />
     </>
   )
 }

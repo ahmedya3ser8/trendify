@@ -1,3 +1,15 @@
+import type { IBrand } from "./ibrand";
+
+export interface IProductResponse {
+  results: number;
+  metadata: {
+    currentPage: number;
+    limit: number;
+    numberOfPages: number;
+  };
+  data: IProduct[];
+}
+
 export interface IProduct {
   id: string;
   description: string;
@@ -16,13 +28,6 @@ export interface IProduct {
   subcategory: ISubCategory[];
   category: ICategory;
   brand: IBrand;
-}
-
-interface IBrand {
-  image: string;
-  name: string;
-  slug: string;
-  _id: string;
 }
 
 interface ICategory {

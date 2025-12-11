@@ -1,23 +1,14 @@
 import { axiosInstance } from "@/services";
 import { isAxiosError } from "axios";
 
-import type { IProduct } from "../models/iproduct";
+import type { IProductResponse } from "../models/iproduct";
 
-export interface IProductResponse {
-  results: number;
-  metadata: {
-    currentPage: number;
-    limit: number;
-    numberOfPages: number;
-  };
-  data: IProduct[];
-}
-
-export const getAllProducts = async (limit: number) => {
+export const getAllProducts = async (limit: number, categoryId?: string) => {
   try {
     const { data } = await axiosInstance.get<IProductResponse>('products', {
       params: { 
-        limit
+        limit,
+        'category[in]': categoryId
       }
     });
     return data;
