@@ -3,7 +3,7 @@ import { isAxiosError } from "axios";
 
 import type { IProductResponse } from "../models/iproduct";
 
-export const getAllProducts = async (limit: number, categoryId?: string, page?: number, minPrice?: number, maxPrice?: number) => {
+export const getAllProducts = async (limit: number, categoryId?: string, page?: number, minPrice?: number, maxPrice?: number, sort?: 'price' | '-price') => {
   try {
     const { data } = await axiosInstance.get<IProductResponse>('products', {
       params: { 
@@ -11,7 +11,8 @@ export const getAllProducts = async (limit: number, categoryId?: string, page?: 
         'category[in]': categoryId,
         page,
         'price[lte]': maxPrice,
-        'price[gte]': minPrice
+        'price[gte]': minPrice,
+        sort
       }
     });
     return data;

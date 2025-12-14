@@ -1,16 +1,12 @@
 import { Link } from "react-router-dom";
 
-import { useProducts } from "@/hooks";
 import { MainTitle } from "@/features/main";
 import { ProductCard } from "@/features/products";
+import { useProducts } from "@/hooks";
 import { FaArrowRight } from "react-icons/fa6";
-import { useEffect } from "react";
 
 const BestSelling = () => {
-  const { tabsList, activeTab, products, selectedTab, mutateAsync } = useProducts();
-  useEffect(() => {
-    mutateAsync({ limit: 4 })
-  }, [mutateAsync])
+  const { tabsList, activeTab, products, setActiveTab, setLimit } = useProducts(4);
   return (
     <section className="py-10">
       <div className="container">
@@ -19,7 +15,7 @@ const BestSelling = () => {
           {tabsList.map((tab, index) => (
             <button 
               key={index} 
-              onClick={() => selectedTab(4, tab.catId)} 
+              onClick={() => { setActiveTab(tab.catId); setLimit(4)}} 
               className={`tab w-fit p-2 text-sm rounded-lg cursor-pointer ${activeTab === tab.catId ? 'bg-main text-white' : ''}`}
             > {tab.content} </button>
           ))}
