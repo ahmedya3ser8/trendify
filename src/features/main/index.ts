@@ -6,5 +6,5 @@ export { default as NotFound } from './pages/not-found/NotFound';
 export { default as MainTitle } from './components/MainTitle';
 export { default as BreadCrumb } from './components/BreadCrumb';
 export * from './services/category.service';
-export * from './services/product.service';
+export * from '../products/services/product.service';
 export * from './services/brand.service';

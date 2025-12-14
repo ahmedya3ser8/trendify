@@ -1,11 +1,4 @@
-const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const formateDate = () => {
-  const dateNow = new Date();
-  const month = months[dateNow.getMonth()];
-  const day = dateNow.getDate();
-  const year = dateNow.getFullYear();
-  return `${month} ${day} ${year}`
-}
+import formateDate from "@/utils/formatedDate";
 
 const BlogCard = ({ item }: { item: string }) => {
   return (
@@ -16,7 +9,7 @@ const BlogCard = ({ item }: { item: string }) => {
       <div className="blog_content flex flex-col gap-3 p-4">
         <div className="flex justify-between">
           <span className='text-[#475467]'>Fashion</span>
-          <span className='text-[#475467]'>{formateDate()}</span>
+          <span className='text-[#475467]'>{formateDate(new Date())}</span>
         </div>
         <h3 className='text-secondary text-xl font-bold'>The perfect Shopify theme</h3>
         <p className='text-[#475467] text-sm md:text-base line-clamp-2'>

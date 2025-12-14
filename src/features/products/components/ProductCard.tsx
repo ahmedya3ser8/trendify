@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-import type { IProduct } from "@/features/main/models/iproduct";
+import type { IProduct } from '../models/iproduct'
 import { FaHeart, FaPlus, FaStar } from "react-icons/fa6";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
   return (
     <div className="product_card bg-white border border-gray-300 rounded-lg relative overflow-hidden">
-      <Link to={''} className="product_image block w-full h-[250px]">
+      <Link to={`/products/${product.category.slug}/${product.id}`} className="product_image block w-full h-[250px]">
         <img src={product.imageCover} className="w-full h-full object-contain" alt={product.title} />
       </Link>
       <button className="wishlist_icon absolute top-4 end-4 cursor-pointer"> <FaHeart className="text-lg" /> </button>

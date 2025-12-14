@@ -8,7 +8,11 @@ const BreadCrumb = ({ pageTitle }: { pageTitle: string }) => {
       <div className="container flex items-center space-x-2 text-gray-500">
         <Link to='/' className="text-main font-semibold"> Home </Link> 
         <MdOutlineArrowForwardIos /> 
-        <span>{pageTitle}</span>
+        {pageTitle === 'Category' ? (
+          <Link to='/products'>{pageTitle}</Link>
+        ): (
+          <span>{pageTitle}</span>
+        )}
       </div>
     </div>
   )

@@ -49,7 +49,7 @@ const Footer = () => {
         </div>
         <div className="text-white flex flex-col md:flex-row justify-between items-center gap-2 md:gap-0 pt-10">
           <p>© 2025 Trendify. All right reserved</p>
-          <ul className="flex items-center gap-6">
+          <ul className="flex items-center gap-6 max-md:-order-1">
             <li className="text-sm">Privacy Policy</li>
             <li className="text-sm">Terms of Services</li>
             <li className="text-sm">Cookies Setting</li>

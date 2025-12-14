@@ -1,7 +1,7 @@
 import { axiosInstance } from "@/services";
 import { isAxiosError } from "axios";
 
-import type { IProductResponse } from "../models/iproduct";
+import type { IProduct, IProductResponse } from '../models/iproduct';
 
 export const getAllProducts = async (limit: number, categoryId?: string, page?: number, minPrice?: number, maxPrice?: number, sort?: 'price' | '-price') => {
   try {
@@ -15,6 +15,18 @@ export const getAllProducts = async (limit: number, categoryId?: string, page?: 
         sort
       }
     });
+    return data;
+  } catch (err) {
+    if (isAxiosError(err)) {
+      throw new Error(err.response?.data.message || 'failed. Please try again.')
+    }
+    throw new Error("Unexpected error occurred");
+  }
+}
+
+export const getProductById = async (productId: string) => {
+  try {
+    const { data } = await axiosInstance.get<{ data: IProduct }>(`products/${productId}`);
     return data;
   } catch (err) {
     if (isAxiosError(err)) {
