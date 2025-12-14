@@ -4,9 +4,13 @@ import { useProducts } from "@/hooks";
 import { MainTitle } from "@/features/main";
 import { ProductCard } from "@/features/products";
 import { FaArrowRight } from "react-icons/fa6";
+import { useEffect } from "react";
 
 const BestSelling = () => {
-  const { tabsList, activeTab, products, selectedTab } = useProducts();
+  const { tabsList, activeTab, products, selectedTab, mutateAsync } = useProducts();
+  useEffect(() => {
+    mutateAsync({ limit: 4 })
+  }, [mutateAsync])
   return (
     <section className="py-10">
       <div className="container">
@@ -15,7 +19,7 @@ const BestSelling = () => {
           {tabsList.map((tab, index) => (
             <button 
               key={index} 
-              onClick={() => selectedTab(tab.catId)} 
+              onClick={() => selectedTab(4, tab.catId)} 
               className={`tab w-fit p-2 text-sm rounded-lg cursor-pointer ${activeTab === tab.catId ? 'bg-main text-white' : ''}`}
             > {tab.content} </button>
           ))}

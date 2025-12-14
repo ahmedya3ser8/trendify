@@ -6,6 +6,7 @@ import { AuthLayout, MainLayout } from '@/components/layouts';
 import { ForgetPassword, Login, Register } from '@/features/auth';
 import { AboutUs, Blog, ContactUs, Home, NotFound } from '@/features/main';
 import PublicRoute from './PublicRoute'; 
+import { ProductDetails, ProductList, Wishlist } from '@/features/products';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,9 @@ const router = createBrowserRouter([
       { path: 'about-us', element: <AboutUs /> },
       { path: 'contact-us', element: <ContactUs /> },
       { path: 'blog', element: <Blog /> },
+      { path: 'products', element: <ProductList /> },
+      { path: 'products/:id', element: <ProductDetails /> },
+      { path: 'wishlist', element: <Wishlist /> },
       { path: '*', element: <NotFound /> },
     ]
   }

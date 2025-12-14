@@ -15,7 +15,7 @@ const Header = () => {
     navigate('/auth/login');
   }
   return (
-    <header className="bg-white fixed w-full left-0 top-0 shadow-sm py-4 sm:z-999">
+    <header className="bg-white fixed w-full left-0 top-0 shadow-sm py-4 z-10 sm:z-999">
       <div className="container flex justify-between items-center">
         <div className="logo text-3xl text-main font-bold"> Trendify </div>
         <ul className="nav_links hidden lg:flex space-x-4">
