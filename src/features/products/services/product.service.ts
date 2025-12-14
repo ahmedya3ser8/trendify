@@ -2,6 +2,7 @@ import { axiosInstance } from "@/services";
 import { isAxiosError } from "axios";
 
 import type { IProduct, IProductResponse } from '../models/iproduct';
+import type { LoaderFunctionArgs } from "react-router-dom";
 
 export const getAllProducts = async (limit: number, categoryId?: string, page?: number, minPrice?: number, maxPrice?: number, sort?: 'price' | '-price') => {
   try {
@@ -24,10 +25,10 @@ export const getAllProducts = async (limit: number, categoryId?: string, page?: 
   }
 }
 
-export const getProductById = async (productId: string) => {
+export const getProductById = async ({ params }: LoaderFunctionArgs) => {
   try {
-    const { data } = await axiosInstance.get<{ data: IProduct }>(`products/${productId}`);
-    return data;
+    const { data } = await axiosInstance.get<{ data: IProduct }>(`products/${params.id}`);
+    return data.data;
   } catch (err) {
     if (isAxiosError(err)) {
       throw new Error(err.response?.data.message || 'failed. Please try again.')

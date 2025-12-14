@@ -4,7 +4,7 @@ import { Toaster } from 'react-hot-toast';
 
 import { AuthLayout, MainLayout } from '@/components/layouts';
 import { ForgetPassword, Login, Register } from '@/features/auth';
-import { AboutUs, Blog, ContactUs, Home, NotFound } from '@/features/main';
+import { AboutUs, Blog, ContactUs, getProductById, Home, NotFound } from '@/features/main';
 import PublicRoute from './PublicRoute'; 
 import { ProductDetails, ProductList, Wishlist } from '@/features/products';
 
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       { path: 'contact-us', element: <ContactUs /> },
       { path: 'blog', element: <Blog /> },
       { path: 'products', element: <ProductList /> },
-      { path: 'products/:slug/:id', element: <ProductDetails /> },
+      { path: 'products/:slug/:id', element: <ProductDetails />, loader: getProductById },
       { path: 'wishlist', element: <Wishlist /> },
       { path: '*', element: <NotFound /> },
     ]
