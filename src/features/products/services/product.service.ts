@@ -1,8 +1,8 @@
-import { axiosInstance } from "@/services";
+import type { LoaderFunctionArgs } from "react-router-dom";
 import { isAxiosError } from "axios";
 
+import { axiosInstance } from "@/services";
 import type { IProduct, IProductResponse } from '../models/iproduct';
-import type { LoaderFunctionArgs } from "react-router-dom";
 
 export const getAllProducts = async (limit: number, categoryId?: string, page?: number, minPrice?: number, maxPrice?: number, sort?: 'price' | '-price') => {
   try {
