@@ -1,4 +1,4 @@
-import type { IBrand } from "./ibrand";
+import type { IBrand } from "@/features/main/models/ibrand"; 
 
 export interface IProductResponse {
   results: number;

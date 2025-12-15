@@ -2,9 +2,11 @@ import { FaStar, FaTruck } from "react-icons/fa6";
 import { useLoaderData } from "react-router-dom";
 import { Autoplay, EffectFade } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useQuery } from "@tanstack/react-query";
 
-import { BreadCrumb } from "@/features/main";
+import { BreadCrumb, getAllProducts } from "@/features/main";
 import formateDate from "@/utils/formatedDate";
+import ProductCard from "../components/ProductCard";
 import type { IProduct } from "../models/iproduct";
 
 const ProductDetails = () => {
@@ -12,7 +14,12 @@ const ProductDetails = () => {
   const dateToday = formateDate(new Date());
   const afterTwoDays = new Date();
   afterTwoDays.setDate(afterTwoDays.getDate() + 2);
-  const dateAfterTwoDays = formateDate(afterTwoDays)
+  const dateAfterTwoDays = formateDate(afterTwoDays);
+  const { data: products } = useQuery({
+    queryKey: ['similarProdutcs', product.id],
+    queryFn: () => getAllProducts(4, product.category._id),
+    select: (data) => data.data
+  })
   return (
     <>
       <BreadCrumb pageTitle="Category" />
@@ -53,6 +60,16 @@ const ProductDetails = () => {
                 <FaTruck /> Estimated Delivery : {dateToday} - {dateAfterTwoDays}
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-10">
+        <div className="container">
+          <h2 className="text-4xl text-secondary font-semibold mb-8">Similar products</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {products?.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
           </div>
         </div>
       </section>
