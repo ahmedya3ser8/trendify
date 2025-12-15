@@ -4,7 +4,7 @@ import ContactForm from "./components/ContactForm";
 const ContactUs = () => {
   return (
     <>
-      <BreadCrumb pageTitle="Contact Us" />
+      <BreadCrumb items={[{label: 'Home', path: '/'}, {label: 'Contact Us'}]} />
       <ContactForm />
     </>
   )

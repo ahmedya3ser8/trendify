@@ -15,7 +15,7 @@ const ProductList = () => {
   const { products, results, activeTab, totalPages, setActiveTab, setCurrentPage, currentPage, price, setPrice, setLimit, setSort } = useProducts(12);
   return (
     <>
-      <BreadCrumb pageTitle="Category" />
+      <BreadCrumb items={[{label: 'Home', path: '/'}, {label: 'Category', path: '/products'}]} />
       <section className="pb-10">
         <div className="container">
           <div className="flex flex-col lg:flex-row gap-4 md:gap-6">

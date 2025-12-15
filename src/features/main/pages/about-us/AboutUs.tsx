@@ -7,7 +7,7 @@ import AboutFashion from "./components/AboutFashion";
 const AboutUs = () => {
   return (
     <>
-      <BreadCrumb pageTitle="About Us" />
+      <BreadCrumb items={[{label: 'Home', path: '/'}, {label: 'About Us'}]} />
       <AboutHero />
       <WhyChooseUs />
       <AboutShopping />
