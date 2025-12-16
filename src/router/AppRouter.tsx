@@ -7,6 +7,7 @@ import { ForgetPassword, Login, Register } from '@/features/auth';
 import { AboutUs, Blog, ContactUs, getProductById, Home, NotFound } from '@/features/main';
 import PublicRoute from './PublicRoute'; 
 import { ProductDetails, ProductList, Wishlist } from '@/features/products';
+import { Cart } from '@/features/cart';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       { path: 'products', element: <ProductList /> },
       { path: 'products/:slug/:id', element: <ProductDetails />, loader: getProductById },
       { path: 'wishlist', element: <Wishlist /> },
+      { path: 'cart', element: <Cart /> },
       { path: '*', element: <NotFound /> },
     ]
   }

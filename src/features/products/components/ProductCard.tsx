@@ -1,9 +1,25 @@
 import { Link } from "react-router-dom";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
+import { addProductToCart } from "@/features/cart";
 import type { IProduct } from '../models/iproduct'
 import { FaHeart, FaPlus, FaStar } from "react-icons/fa6";
+import { LuLoader } from "react-icons/lu";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
+  const queryClient = useQueryClient();
+  const { mutateAsync: addToCart, isPending } = useMutation({
+    mutationKey: ['addToCart', product.id],
+    mutationFn: addProductToCart,
+    onSuccess: (res) => {
+      if (res.status === 'success') {
+        toast.success(res.message!)
+        queryClient.invalidateQueries({ queryKey: ['cart'] });
+      } 
+    },
+    onError: (err) => toast.error(err.message)
+  })
   return (
     <div className="product_card bg-white border border-gray-300 rounded-lg relative overflow-hidden">
       <Link to={`/products/${product.category.slug}/${product.id}`} className="product_image block w-full h-[250px]">
@@ -20,7 +36,9 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         </div>
         <div className="flex justify-between">
           <span className="text-main font-medium"> {product.price} EGP</span>
-          <button className="size-8 bg-main text-white rounded-lg flex justify-center items-center"> <FaPlus /> </button>
+          <button onClick={() => addToCart(product.id)} className="size-8 bg-main text-white rounded-lg flex justify-center items-center cursor-pointer">
+            { isPending ? <LuLoader className="animate-spin" /> : <FaPlus /> }   
+          </button>
         </div>
       </div>
     </div>
