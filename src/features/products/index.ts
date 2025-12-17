@@ -6,3 +6,5 @@ export { default as SimilarProducts } from "./components/SimilarProducts";
 export { default as ProductDetails } from "./pages/ProductDetails";
 export { default as ProductList } from "./pages/ProductList";
 export { default as Wishlist } from "./pages/Wishlist";
+export * from './services/product.service';
+export * from './services/wishlist.service';
