@@ -11,7 +11,7 @@ const BreadCrumb = ({ items }: { items: {label: string, path?: string}[] }) => {
           return (
             <div key={index} className="flex items-center gap-2">
               {item.path ? (
-                <Link to={item.path}> {item.label} </Link>
+                <Link className="text-main font-bold" to={item.path}> {item.label} </Link>
               ) : (
                 <span> {item.label} </span>
               )}
