@@ -6,9 +6,17 @@ import {
   DrawerContent,
   DrawerTrigger
 } from "@/components/ui/drawer";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarTrigger
+} from "@/components/ui/menubar";
 import useCart from "@/features/cart/hooks/useCart";
 import useWishlist from "@/features/products/hooks/useWishlist";
-import { FaArrowRightFromBracket, FaBars, FaCartShopping, FaRegHeart } from "react-icons/fa6";
+import { FaHistory } from "react-icons/fa";
+import { FaArrowRightFromBracket, FaBars, FaCartShopping, FaRegHeart, FaUser } from "react-icons/fa6";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -19,7 +27,7 @@ const Header = () => {
     navigate('/auth/login');
   }
   return (
-    <header className="bg-white fixed w-full left-0 top-0 shadow-sm py-4 z-10 sm:z-999">
+    <header className="bg-white fixed w-full left-0 top-0 shadow-sm py-4 z-10 sm:z-99">
       <div className="container flex justify-between items-center">
         <Link to='/' className="logo text-3xl text-main font-bold"> Trendify </Link>
         <ul className="nav_links hidden lg:flex space-x-4">
@@ -46,7 +54,19 @@ const Header = () => {
               </span>
             </Link> 
           </li>
-          <button onClick={() => logout()}> <FaArrowRightFromBracket className="text-2xl text-main" /> </button>
+          <li>
+            <Menubar className="border-none shadow-none">
+              <MenubarMenu>
+                <MenubarTrigger>
+                  <FaUser className="text-2xl text-main cursor-pointer" />
+                </MenubarTrigger>
+                <MenubarContent className="z-999">
+                  <MenubarItem onSelect={() => navigate("/allorders")}> <FaHistory /> Orders </MenubarItem>
+                  <MenubarItem onSelect={logout}> <FaArrowRightFromBracket /> Logout </MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          </li>
           <Drawer direction="right">
             <DrawerTrigger asChild>
               <button type="button" className="toggel_bars lg:hidden"> <FaBars className="text-2xl text-main" /> </button>

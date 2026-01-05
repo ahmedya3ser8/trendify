@@ -4,7 +4,6 @@ import OrderCard from "./OrderCard";
 
 const OrderDetails = () => {
   const userId = localStorage.getItem('userId');
-  console.log(userId);
   const { data: orders } = useQuery({
     queryKey: ['allorders', userId],
     queryFn: () => getUserOrders(userId!),

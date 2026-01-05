@@ -21,7 +21,7 @@ const useCheckout = () => {
     if (method === 'cash') cashPayment({ cartId: cartId!, formData })
     else if (method === 'online') onlinePayment({ cartId: cartId!, formData })
   }
-  const { mutateAsync: cashPayment } = useMutation({
+  const { mutateAsync: cashPayment, isPending: isCashPending } = useMutation({
     mutationFn: cashOrder,
     onSuccess: (res) => {
       console.log(res)
@@ -34,7 +34,7 @@ const useCheckout = () => {
       toast.error(err.message);
     }
   })
-  const { mutateAsync: onlinePayment } = useMutation({
+  const { mutateAsync: onlinePayment, isPending: isOnlinePending } = useMutation({
     mutationFn: onlineOrder,
     onSuccess: (res) => {
       console.log(res)
@@ -47,7 +47,7 @@ const useCheckout = () => {
       toast.error(err.message);
     }
   })
-  return { method, setMethod, register, handleSubmit, errors, submitForm }
+  return { method, setMethod, register, handleSubmit, errors, submitForm, isCashPending, isOnlinePending }
 }
 
 export default useCheckout;

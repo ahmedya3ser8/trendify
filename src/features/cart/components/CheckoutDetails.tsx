@@ -1,8 +1,9 @@
 import { InputForm } from "@/features/auth";
 import useCheckout from "../hooks/useCheckout";
+import { LuLoader } from "react-icons/lu";
 
 const CheckoutDetails = () => {
-  const { method, setMethod, register, handleSubmit, errors, submitForm } = useCheckout();
+  const { method, setMethod, register, handleSubmit, errors, submitForm, isCashPending, isOnlinePending } = useCheckout();
   return (
     <section>
       <div className="container">
@@ -76,7 +77,9 @@ const CheckoutDetails = () => {
               <input type="text" className="w-full outline-none" placeholder="Coupon Code" />
               <button className="bg-main text-white px-4 py-2 rounded-lg"> apply </button>
             </div>
-            <button type="button" onClick={handleSubmit(submitForm)} className="btn_primary flex justify-center items-center"> Payment </button>
+            <button type="button" onClick={handleSubmit(submitForm)} className="btn_primary flex justify-center items-center"> 
+              { ( isCashPending || isOnlinePending ) ? <LuLoader className="animate-spin" /> : 'Payment'} 
+            </button>
           </div>
 
         </div>
