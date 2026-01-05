@@ -8,6 +8,7 @@ import { AboutUs, Blog, ContactUs, getProductById, Home, NotFound } from '@/feat
 import PublicRoute from './PublicRoute'; 
 import { ProductDetails, ProductList, Wishlist } from '@/features/products';
 import { Cart, Checkout } from '@/features/cart';
+import { AllOrders } from '@/features/orders';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
       { path: 'wishlist', element: <Wishlist /> },
       { path: 'cart', element: <Cart /> },
       { path: 'checkout/:cartId', element: <Checkout /> },
+      { path: 'allorders', element: <AllOrders /> },
       { path: '*', element: <NotFound /> },
     ]
   }

@@ -1,25 +1,11 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { clearUserCart, getLoggedUserCart } from "../services/cart.service";
 import { CartItem, CartSummary } from "@/features/cart";
-import toast from "react-hot-toast";
 import { LuLoader } from "react-icons/lu";
 import { Link } from "react-router-dom";
+import useCart from "../hooks/useCart";
 
 const CartDetails = () => {
-  const queryClient = useQueryClient();
-  const { data: cartDetails } = useQuery({
-    queryKey: ['cart'],
-    queryFn: getLoggedUserCart
-  })
-  const { mutateAsync: clearCart, isPending: pendingClearCart } = useMutation({
-    mutationFn: clearUserCart,
-    onSuccess: () => {    
-      toast.success('Cart cleared successfully 🛒');
-      queryClient.invalidateQueries({ queryKey: ['cart'] });
-    },
-    onError: (err) => toast.error(err.message)
-  })
+  const { cartDetails, clearCart, pendingClearCart } = useCart();
   return (
     <section className="pb-10">
       <div className="container">

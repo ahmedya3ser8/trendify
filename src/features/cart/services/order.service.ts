@@ -1,12 +1,12 @@
 import { isAxiosError } from "axios";
 
 import { axiosInstance } from "@/services";
-import type { TCheckoutSchema } from "../components/CheckoutDetails";
-import type { IOrder } from "../models/iorder";
+import type { TCheckoutSchema } from "@/validations"; 
+import type { Iorder } from "@/features/orders/models/iorder"; 
 
 interface IResponse {
   status: string;
-  data: IOrder,
+  data: Iorder,
   session: {
     cancel_url: string;
     success_url: string;

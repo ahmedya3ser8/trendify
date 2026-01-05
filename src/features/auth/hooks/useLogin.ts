@@ -3,9 +3,19 @@ import { useMutation } from "@tanstack/react-query";
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 import { signin } from "@/features/auth";
 import { loginSchema, type TLoginSchema } from "@/validations";
+
+export interface JwtPayload {
+  id: string
+  name: string
+  role: string
+  iat: number
+  exp: number
+}
+
 
 const useLogin = () => {
   const navigate = useNavigate();
@@ -24,6 +34,8 @@ const useLogin = () => {
       if (res.message === 'success') {
         toast.success('Login successful! Welcome back.');
         localStorage.setItem('access_trendify_token', res.token);
+        const decoded = jwtDecode<JwtPayload>(res.token);
+        localStorage.setItem('userId', decoded.id);
         navigate('/');
       }
     },

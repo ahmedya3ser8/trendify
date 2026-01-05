@@ -1,32 +1,14 @@
 import { useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import toast from "react-hot-toast";
 
-import { removeSpecificCartItem, updateCartProductQuantity } from "../services/cart.service";
-import type { ICartItem } from "../models/icart";
-import { FaMinus, FaPlus, FaStar } from "react-icons/fa6";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { FaMinus, FaPlus, FaStar } from "react-icons/fa6";
 import { LuLoader } from "react-icons/lu";
+import useCart from "../hooks/useCart";
+import type { ICartItem } from "../models/icart";
 
 const CartItem = ({ product }: { product: ICartItem }) => {
   const [btnAction, setBtnAction] = useState<'minus' | 'plus'>();
-  const queryClient = useQueryClient();
-  const { mutateAsync: removeCartItem, isPending: pendingRemoveCart } = useMutation({
-    mutationFn: removeSpecificCartItem,
-    onSuccess: () => {
-      toast.success('Product removed successfully');
-      queryClient.invalidateQueries({ queryKey: ['cart'] });
-    },
-    onError: (err) => toast.error(err.message)
-  })
-  const { mutateAsync: updateCartItem, isPending: pendingUpdateCart } = useMutation({
-    mutationFn: ({ productId, count }: { productId: string, count: number }) => updateCartProductQuantity(productId, count),
-    onSuccess: () => {
-      toast.success('Quantity updated successfully');
-      queryClient.invalidateQueries({ queryKey: ['cart'] });
-    },
-    onError: (err) => toast.error(err.message)
-  })
+  const { removeCartItem, pendingRemoveCart, updateCartItem, pendingUpdateCart } = useCart();
   return (
     <div className="cart_item flex flex-col md:flex-row items-center gap-4 border-b border-gray-300 last:border-b-0 p-4">
       <div className="cart_image w-32">

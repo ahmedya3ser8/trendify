@@ -6,10 +6,14 @@ import {
   DrawerContent,
   DrawerTrigger
 } from "@/components/ui/drawer";
+import useCart from "@/features/cart/hooks/useCart";
+import useWishlist from "@/features/products/hooks/useWishlist";
 import { FaArrowRightFromBracket, FaBars, FaCartShopping, FaRegHeart } from "react-icons/fa6";
 
 const Header = () => {
   const navigate = useNavigate();
+  const { cartDetails } = useCart();
+  const { data: wishlistDetails } = useWishlist();
   const logout = () => {
     localStorage.removeItem('access_trendify_token');
     navigate('/auth/login');
@@ -26,8 +30,22 @@ const Header = () => {
           <li> <NavLink to='/contact-us' className="text-secondary text-xl transition duration-300"> Contact Us </NavLink> </li>
         </ul>
         <ul className="nav_links flex items-center space-x-4">
-          <li> <Link to='/wishlist'> <FaRegHeart className="text-2xl text-main" /> </Link> </li>
-          <li> <Link to='/cart'> <FaCartShopping className="text-2xl text-main" /> </Link> </li>
+          <li> 
+            <Link to='/wishlist' className="relative"> 
+              <FaRegHeart className="text-2xl text-main" /> 
+              <span className="absolute -top-2.5 -right-1.5 size-5 bg-main text-white border border-white rounded-full flex justify-center items-center text-sm"> 
+                {wishlistDetails?.length || 0} 
+              </span>
+            </Link> 
+          </li>
+          <li> 
+            <Link to='/cart' className="relative"> 
+              <FaCartShopping className="text-2xl text-main" /> 
+              <span className="absolute -top-2.5 -right-1.5 size-5 bg-main text-white border border-white rounded-full flex justify-center items-center text-sm"> 
+                {cartDetails?.numOfCartItems} 
+              </span>
+            </Link> 
+          </li>
           <button onClick={() => logout()}> <FaArrowRightFromBracket className="text-2xl text-main" /> </button>
           <Drawer direction="right">
             <DrawerTrigger asChild>
